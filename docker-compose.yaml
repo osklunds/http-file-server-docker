@@ -1,0 +1,15 @@
+# compose file used for development (building and testing)
+
+services:
+  http-file-server-dev:
+    image: osklunds/http-file-server-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: http-file-server-dev
+    volumes:
+      - /home/oskar/Downloads:/files:ro
+    ports:
+      - 12345:80
+    restart: unless-stopped
+    init: true
